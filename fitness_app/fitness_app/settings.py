@@ -19,6 +19,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'fitness_app.attendance',
+    'fitness_app.contact',
+    'fitness_app.enrollment',
+    'fitness_app.gallery',
+    'fitness_app.membership_plan',
+    'fitness_app.trainer'
 ]
 
 MIDDLEWARE = [
@@ -52,7 +58,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fitness_app.wsgi.application'
 
-
 DATABASES = {
     "default": {
         "ENGINE": os.environ.get("DB_ENGINE"),
@@ -63,7 +68,6 @@ DATABASES = {
         "PORT": os.environ.get("DB_PORT"),
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -80,7 +84,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -89,7 +92,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'staticfiles')
@@ -97,6 +99,5 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
