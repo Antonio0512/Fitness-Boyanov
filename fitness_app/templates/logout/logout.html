@@ -1,0 +1,27 @@
+{% extends "base/base.html" %}
+
+{% block head %}
+
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="layout__box p-4"> <!-- Wrap the content in a box -->
+                    <h2 class="mb-4">Log Out</h2>
+                    <form class="form" method="post" action="{% url "logout" %}">
+                        {% csrf_token %}
+                        <div class="form__group">
+                            <p class="text-light">Are you sure you want to logout?</p>
+                        </div>
+
+                        <div class="form__group">
+                            <button class="btn btn-dark" type="submit">Sign In</button>
+                            <a class="btn btn-secondary" href="{% url "home" %}">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> <!-- Close the box -->
+    </div>
+    <div class="col-md-3"></div>
+{% endblock head %}

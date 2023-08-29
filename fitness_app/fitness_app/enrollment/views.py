@@ -1,5 +1,7 @@
 from django.contrib import messages
-from django.contrib.auth.views import LoginView
+from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
@@ -38,3 +40,14 @@ class SignInView(LoginView):
     def form_invalid(self, form):
         messages.error(self.request, "The Username and Password do not match!")
         return super().form_invalid(form)
+
+
+class LogOutView(LogoutView):
+    template_name = "logout/logout.html"
+
+    def get(self, request, *args, **kwargs):
+        return self.render_to_response({})
+
+    def post(self, request, *args, **kwargs):
+        logout(request)
+        return redirect('home')

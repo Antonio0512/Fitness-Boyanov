@@ -19,7 +19,11 @@
                     <li><a href="#">View Profile</a></li>
                 </ul>
             </li>
-            <li><a class="nav-link scrollto" href="{% url "sign-in" %}">Sign In</a></li>
+            {% if not request.user.is_authenticated %}
+                <li><a class="nav-link scrollto" href="{% url "sign-in" %}">Sign In</a></li>
+            {% else %}
+                <li><a class="nav-link" href="{% url "logout" %}">Logout</a></li>
+            {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
