@@ -406,7 +406,7 @@ h6 {
 #hero {
     width: 100%;
     height: 100vh;
-    background: url("../img/hero-bg.jpg") top center;
+    background: url("../img/gym1.jpg") top center;
     background-size: cover;
     position: relative;
 }
@@ -1569,4 +1569,22 @@ section {
     text-align: center;
     font-size: 13px;
     color: #fff;
+}
+
+.membership-plan-details-description {
+    margin-top: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.membership-plan-details-description::-webkit-scrollbar {
+    width: 10px;
+}
+
+.membership-plan-details-description::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.membership-plan-details-description::-webkit-scrollbar-thumb {
+    background: #888;
 }

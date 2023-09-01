@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from fitness_app.membership_plan.models import MembershipPlan
+
 
 class Member(AbstractUser):
     username = models.CharField(unique=True, max_length=50)
@@ -14,6 +16,8 @@ class Member(AbstractUser):
     profile_picture = models.ImageField(upload_to="profile_img")
 
     expiration = models.DateField(blank=True, null=True)
+
+    membership_plan = models.ForeignKey(MembershipPlan, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.username

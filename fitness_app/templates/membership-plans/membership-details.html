@@ -1,0 +1,40 @@
+{% extends "base/base.html" %}
+{% block title %}
+    Membership details
+{% endblock title %}
+
+{% block head %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ membership_plan.profile_picture.url }}" alt="{{ membership_plan.name }} Image"
+                     class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h1 class="display-4 mb-4">{{ membership_plan.name }}</h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4 class="text-light">Price:</h4>
+                        <p class="text-light">${{ membership_plan.price }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="text-light">Duration:</h4>
+                        <p class="text-light">{{ membership_plan.duration_months }} months</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="text-light">Age:</h4>
+                        <p class="text-light">{{ membership_plan.min_age }}+ years</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h2 class="text-light">Description:</h2>
+                <div class="membership-plan-details-description text-light">{{ membership_plan.description }}</div>
+            </div>
+        </div>
+
+        <a href="{% url 'membership-plans' %}" class="btn btn-primary mt-4">Back to Membership Plans</a>
+    </div>
+{% endblock head %}

@@ -1,0 +1,38 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+    Membership plans
+{% endblock title %}
+
+{% block head %}
+    <h1>Choose the best Membership Plan for you.</h1>
+{% endblock %}
+
+
+{% block body %}
+
+    <section id="services" class="services">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Plans</h2>
+                <p>Check our Membership Plans</p>
+            </div>
+
+            <div class="row">
+                {% for plan in membership_plans %}
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in"
+                         data-aos-delay="100">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                            <h4><a href="{% url "membership-plan-details" plan.pk %}">{{ plan.name }}</a></h4>
+                            <p>{{ plan.description|slice:150 }} ...</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+
+{% endblock body %}

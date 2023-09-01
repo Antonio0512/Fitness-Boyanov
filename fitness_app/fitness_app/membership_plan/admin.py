@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import MembershipPlan
 
-# Register your models here.
+
+@admin.register(MembershipPlan)
+class MembershipPlanAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price')
