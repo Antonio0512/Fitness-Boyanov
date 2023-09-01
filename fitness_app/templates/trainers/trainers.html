@@ -1,0 +1,39 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}
+    Trainers
+{% endblock title %}
+
+{% block head %}
+    <h1>Choose your trainer that will help you achieve your goals<span>.</span></h1>
+{% endblock head %}
+
+{% block body %}
+    <section id="team" class="trainer">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Team</h2>
+                <p>Check our Team</p>
+            </div>
+
+            <div class="row">
+                {% for trainer in trainers %}
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                        <div class="member" data-aos="fade-up" data-aos-delay="100">
+                            <div class="member-img">
+                                <a href="{% url "trainer-details" trainer.pk %}"><img
+                                        src="{{ trainer.profile_picture.url }}" class="img-fluid"
+                                        alt=""></a>
+                            </div>
+                            <div class="member-info">
+                                <h4>{{ trainer.first_name }} {{ trainer.last_name }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+{% endblock body %}

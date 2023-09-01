@@ -7,7 +7,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("fitness_app.base.urls")),
     path("enrollment/", include("fitness_app.enrollment.urls")),
-    path("membership-plans", include("fitness_app.membership_plan.urls"))
+    path("membership-plans/", include("fitness_app.membership_plan.urls")),
+    path("trainers/", include("fitness_app.trainer.urls"))
 ]
 
 if settings.DEBUG:

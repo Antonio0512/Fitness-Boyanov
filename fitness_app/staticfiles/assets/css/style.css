@@ -1127,12 +1127,12 @@ section {
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
-.team {
+.trainer {
     background: #fff;
     padding: 60px 0;
 }
 
-.team .member {
+.trainer .member {
     margin-bottom: 20px;
     overflow: hidden;
     border-radius: 5px;
@@ -1140,12 +1140,12 @@ section {
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-.team .member .member-img {
+.trainer .member .member-img {
     position: relative;
     overflow: hidden;
 }
 
-.team .member .social {
+.trainer .member .social {
     position: absolute;
     left: 0;
     bottom: 30px;
@@ -1155,7 +1155,7 @@ section {
     text-align: center;
 }
 
-.team .member .social a {
+.trainer .member .social a {
     transition: color 0.3s;
     color: #151515;
     margin: 0 3px;
@@ -1170,42 +1170,42 @@ section {
     align-items: center;
 }
 
-.team .member .social a:hover {
+.trainer .member .social a:hover {
     color: #151515;
     background: #ffc451;
 }
 
-.team .member .social i {
+.trainer .member .social i {
     font-size: 18px;
     line-height: 0;
 }
 
-.team .member .member-info {
+.trainer .member .member-info {
     padding: 25px 15px;
 }
 
-.team .member .member-info h4 {
+.trainer .member .member-info h4 {
     font-weight: 700;
     margin-bottom: 5px;
     font-size: 18px;
     color: #151515;
 }
 
-.team .member .member-info span {
+.trainer .member .member-info span {
     display: block;
     font-size: 13px;
     font-weight: 400;
     color: #aaaaaa;
 }
 
-.team .member .member-info p {
+.trainer .member .member-info p {
     font-style: italic;
     font-size: 14px;
     line-height: 26px;
     color: #777777;
 }
 
-.team .member:hover .social {
+.trainer .member:hover .social {
     opacity: 1;
     bottom: 15px;
 }
@@ -1573,7 +1573,7 @@ section {
 
 .membership-plan-details-description {
     margin-top: 20px;
-    max-height: 200px;
+    max-height: 150px;
     overflow-y: auto;
 }
 
@@ -1587,4 +1587,28 @@ section {
 
 .membership-plan-details-description::-webkit-scrollbar-thumb {
     background: #888;
+}
+
+
+.trainer-details-description {
+    margin-top: 20px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.trainer-details-description::-webkit-scrollbar {
+    width: 10px;
+}
+
+.trainer-details-description::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.trainer-details-description::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.details-custom_image {
+    width: 250px;
+    height: 240px;
 }

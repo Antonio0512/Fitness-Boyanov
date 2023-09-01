@@ -1,0 +1,38 @@
+{% extends "base/base.html" %}
+{% block title %}
+    Trainer details
+{% endblock title %}
+
+{% block head %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ trainer.profile_picture.url }}" alt="{{ trainer.first_name }} Image"
+                     class="img-fluid details-custom_image">
+            </div>
+            <div class="col-md-6">
+                <h1 class="display-4 mb-4">{{ trainer.first_name }}</h1>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="text-light">Email:</h4>
+                        <p class="text-light">{{ trainer.email }}</p>
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        <h4 class="text-light">Phone:</h4>
+                        <p class="text-light">{{ trainer.phone_number }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h2 class="text-light">Bio:</h2>
+                <div class="trainer-details-description text-light">{{ trainer.bio }}</div>
+            </div>
+        </div>
+
+        <a href="{% url 'trainers-list' %}" class="btn btn-primary mt-4">Back to Trainers</a>
+    </div>
+
+
+{% endblock head %}
