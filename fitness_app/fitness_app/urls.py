@@ -10,7 +10,8 @@ urlpatterns = [
     path("membership-plans/", include("fitness_app.membership_plan.urls")),
     path("trainers/", include("fitness_app.trainer.urls")),
     path("profile/", include("fitness_app.enrollment.urls")),
-    path("attendance/", include("fitness_app.attendance.urls"))
+    path("attendance/", include("fitness_app.attendance.urls")),
+    path("gallery/", include("fitness_app.gallery.urls"))
 ]
 
 if settings.DEBUG:

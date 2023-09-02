@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Photo
 
-# Create your views here.
+
+class GalleryListView(ListView):
+    model = Photo
+    template_name = "gallery/gallery-list.html"
+    context_object_name = "images"
