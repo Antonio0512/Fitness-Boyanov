@@ -4,12 +4,12 @@
 {% endblock title %}
 
 {% block head %}
-    <div class="container mt-2">
+    <div class="container mt-0 mb-6">
         <div class="row">
             <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="layout__box p-4">
-                    <h1 class="mb-5">Edit Profile</h1>
+            <div class="col-md-8">
+                <div class="layout__box p-5">
+                    <h1 class="mb-4">Edit Profile</h1>
 
                     {% for message in messages %}
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -18,9 +18,39 @@
                         </div>
                     {% endfor %}
 
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data" action="{% url "profile-edit" request.user.pk %}">
                         {% csrf_token %}
-                        {{ form.as_p }}
+                        <div class="form__group mb-3">
+                            <label for="{{ form.profile_picture.id_for_label }}">Change Avatar:</label>
+                            <div class="custom-file-input">
+                                <input type="file" class="custom-file" id="{{ form.avatar.id_for_label }}"
+                                       name="{{ form.profile_picture.name }}">
+                            </div>
+                        </div>
+
+                        <div class="form__group">
+                            {{ form.username }}
+                        </div>
+
+                        <div class="form__group">
+                            {{ form.first_name }}
+                        </div>
+
+                        <div class="form__group">
+                            {{ form.last_name }}
+                        </div>
+
+                        <div class="form__group">
+                            {{ form.email }}
+                        </div>
+
+                        <div class="form__group">
+                            {{ form.phone_number }}
+                        </div>
+
+                        <div class="form__group">
+                            {{ form.age }}
+                        </div>
 
                         <div class="d-grid gap-2">
                             <button class="btn btn-dark" type="submit">Update Profile</button>

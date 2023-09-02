@@ -1354,9 +1354,15 @@ section {
 
 .details-custom_image {
     width: 250px;
-    height: 240px;
+    height: 250px;
+    margin-top: 4rem;
 }
 
 .details-paragraph {
     margin-left: 10px;
+}
+
+
+.mb-6 {
+    margin-bottom: 4rem;
 }

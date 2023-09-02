@@ -65,8 +65,8 @@ class ProfileDetailsView(LoginRequiredMixin, DetailView):
 
 class ProfileEditView(LoginRequiredMixin, UpdateView):
     model = User
-    template_name = "enroll/profile-edit.html"
     form_class = ProfileUpdateForm
+    template_name = "enroll/profile-edit.html"
 
     def get_success_url(self):
         return reverse_lazy("profile-details", kwargs={"pk": self.request.user.pk})
@@ -76,7 +76,13 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
             instance = form.save(commit=False)
             instance.user = self.request.user
             instance.save()
-            form.save_m2m()
         except IntegrityError:
             messages.error(self.request, 'Error updating profile. Please check your input and try again.')
-            return redirect('profile-edit', kwargs={"pk": self.request.user.pk})
+            return redirect('profile-edit')
+
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print(form.errors)
+        messages.error(self.request, 'Error updating profile.')
+        return super().form_invalid(form)

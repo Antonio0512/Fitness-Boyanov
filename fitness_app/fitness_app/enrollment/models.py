@@ -14,7 +14,7 @@ class Member(AbstractUser):
     phone_number = models.CharField(max_length=12, null=True, blank=True)
 
     age = models.IntegerField(null=True, blank=True)
-    profile_picture = models.ImageField(upload_to="member_images/")
+    profile_picture = models.ImageField(upload_to="member_images/", blank=True, null=True)
 
     expiration = models.DateField(blank=True, null=True)
 
