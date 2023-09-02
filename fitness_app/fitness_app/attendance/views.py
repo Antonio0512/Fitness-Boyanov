@@ -9,13 +9,16 @@ from .models import Attendance
 
 class AttendanceListView(LoginRequiredMixin, ListView):
     model = Attendance
-    template_name = Attendance
-    context_object_name = "attendance"
+    template_name = "attendance/attendance-list.html"
+    context_object_name = "attendances"
+
+    def get_queryset(self):
+        return Attendance.objects.filter(user=self.request.user)
 
 
 class AttendanceAddView(LoginRequiredMixin, CreateView):
     model = Attendance
-    template_name = "attendance/attendance.html"
+    template_name = "attendance/attendance-add.html"
     form_class = AttendanceAddForm
 
     def get_success_url(self):
@@ -28,6 +31,7 @@ class AttendanceAddView(LoginRequiredMixin, CreateView):
         return context
 
     def form_valid(self, form):
+        form.instance.user = self.request.user
         form.save()
         messages.success(self.request, 'Attendance added successfully.')
         return super().form_valid(form)

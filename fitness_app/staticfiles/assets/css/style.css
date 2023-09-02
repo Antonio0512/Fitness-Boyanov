@@ -1366,3 +1366,9 @@ section {
 .mb-6 {
     margin-bottom: 4rem;
 }
+
+
+.table-container {
+    max-height: 300px;
+    overflow-y: auto;
+}

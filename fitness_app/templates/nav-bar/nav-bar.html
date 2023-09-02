@@ -9,12 +9,12 @@
             <li><a class="nav-link" href="{% url "home" %}">Home</a></li>
             <li><a class="nav-link" href="/about">About</a></li>
             <li><a class="nav-link" href="/gallery">Gallery</a></li>
-            <li class="dropdown"><a href=""><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                     <li><a href="{% url "membership-plans" %}">Membership plans</a></li>
                     <li><a class="nav-link" href="{% url "trainers-list" %}">Trainers</a></li>
                     {% if request.user.is_authenticated %}
-                        <li><a href="{% url "attendance-add" %}">Attendance</a></li>
+                        <li><a href="{% url "attendance-list" %}">Attendance</a></li>
                     {% endif %}
                 </ul>
             </li>

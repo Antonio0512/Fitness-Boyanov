@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+{% block title %} Attendance List {% endblock title %}
+{% block head %}
+    <h1 class="mb-4">Follow your attendances<span>.</span></h1>
+    <div class="mt-4">
+        <a href="{% url 'attendance-add' %}" class="btn btn-primary">Add attendance</a>
+    </div>
+{% endblock head %}
+
+
+{% block body %}
+    <div class="container mt-3 mb-3">
+        <div class="row">
+            <div class="col-md-12">
+
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        <strong></strong> {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+
+                <div class="table-container">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Day</th>
+                            <th scope="col">Login Time</th>
+                            <th scope="col">Logout Time</th>
+                            <th scope="col">Workout</th>
+                            <th scope="col">Trainer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for attendance in attendances|slice:10 %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ attendance.login }}</td>
+                                <td>{{ attendance.logout }}</td>
+                                <td>{{ attendance.workout }}</td>
+                                <td>{{ attendance.trained_by }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
