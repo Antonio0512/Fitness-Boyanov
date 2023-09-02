@@ -1,0 +1,37 @@
+{% extends "base/base.html" %}
+{% block title %}
+    Edit Profile
+{% endblock title %}
+
+{% block head %}
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="layout__box p-4">
+                    <h1 class="mb-5">Edit Profile</h1>
+
+                    {% for message in messages %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong></strong> {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-dark" type="submit">Update Profile</button>
+                        </div>
+                    </form>
+
+                    <br><a href="{% url 'profile-details' request.user.pk %}">Back to Profile Details</a>
+                </div>
+            </div>
+
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+{% endblock head %}

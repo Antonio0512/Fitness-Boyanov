@@ -1,12 +1,16 @@
 from django.contrib import messages
-from django.contrib.auth import logout
+from django.contrib.auth import logout, get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
+from django.db import IntegrityError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from .models import Member
-from .forms import SignUpForm, SignInForm
+from .forms import SignUpForm, SignInForm, ProfileUpdateForm
+
+User = get_user_model()
 
 
 class SignUpView(CreateView):
@@ -42,7 +46,7 @@ class SignInView(LoginView):
         return super().form_invalid(form)
 
 
-class LogOutView(LogoutView):
+class LogOutView(LoginRequiredMixin, LogoutView):
     template_name = "logout/logout.html"
 
     def get(self, request, *args, **kwargs):
@@ -51,3 +55,28 @@ class LogOutView(LogoutView):
     def post(self, request, *args, **kwargs):
         logout(request)
         return redirect('home')
+
+
+class ProfileDetailsView(LoginRequiredMixin, DetailView):
+    model = User
+    template_name = "enroll/profile-details.html"
+    context_object_name = "user"
+
+
+class ProfileEditView(LoginRequiredMixin, UpdateView):
+    model = User
+    template_name = "enroll/profile-edit.html"
+    form_class = ProfileUpdateForm
+
+    def get_success_url(self):
+        return reverse_lazy("profile-details", kwargs={"pk": self.request.user.pk})
+
+    def form_valid(self, form):
+        try:
+            instance = form.save(commit=False)
+            instance.user = self.request.user
+            instance.save()
+            form.save_m2m()
+        except IntegrityError:
+            messages.error(self.request, 'Error updating profile. Please check your input and try again.')
+            return redirect('profile-edit', kwargs={"pk": self.request.user.pk})

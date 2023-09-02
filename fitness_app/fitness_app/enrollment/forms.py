@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.forms import ModelForm
 
 Member = get_user_model()
 
@@ -34,3 +35,9 @@ class SignInForm(AuthenticationForm):
 
     class Meta:
         fields = ('username', 'password')
+
+
+class ProfileUpdateForm(ModelForm):
+    class Meta:
+        model = Member
+        fields = ("username", "first_name", "last_name", "email", "phone_number", "age", "profile_picture")

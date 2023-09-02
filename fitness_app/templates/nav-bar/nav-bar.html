@@ -14,7 +14,7 @@
                 <ul>
                     <li><a href="{% url "membership-plans" %}">Membership plans</a></li>
                     <li><a href="#">Workouts</a></li>
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="{% url "profile-details" request.user.pk %}">Profile</a></li>
                 </ul>
             </li>
             {% if not request.user.is_authenticated %}
