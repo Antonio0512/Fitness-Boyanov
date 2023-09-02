@@ -1353,9 +1353,9 @@ section {
 }
 
 .details-custom_image {
-    width: 250px;
-    height: 250px;
-    margin-top: 4rem;
+    width: 300px;
+    height: 300px;
+    margin-top: 1rem;
 }
 
 .details-paragraph {

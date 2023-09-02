@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import logout, get_user_model
+from django.contrib.auth import logout, get_user_model, authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.db import IntegrityError
@@ -26,6 +26,17 @@ class SignUpView(CreateView):
 
         context['form'] = self.form_class
         return context
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password1']
+        user = authenticate(username=username, password=password)
+
+        login(self.request, user)
+
+        return response
 
     def form_invalid(self, form):
         for field, errors in form.errors.items():
